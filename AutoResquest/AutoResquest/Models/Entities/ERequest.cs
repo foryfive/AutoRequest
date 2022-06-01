@@ -1,9 +1,5 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoRequest.Models.Entities
 {
@@ -11,6 +7,7 @@ namespace AutoRequest.Models.Entities
     public class ERequest
     {
         [PrimaryKey]
+        [AutoIncrement]
         public int Id { get; set; }
         public string Url { get; set; }
         public TimeSpan Inteval { get; set; }

@@ -1,9 +1,6 @@
 ﻿using AutoRequest.Models.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoRequest.Models
 {
@@ -16,7 +13,7 @@ namespace AutoRequest.Models
         public void CreateOrUdate(ERequest request)
         {
             CreateTable();
-            GetConn().InsertOrReplace(request);
+            GetConn().Insert(request);
         }
         public void Delete(ERequest request)
         {
@@ -24,6 +21,11 @@ namespace AutoRequest.Models
             GetConn().Delete(request);
         }
         public IEnumerable<ERequest> GetListActive()
+        {
+            CreateTable();
+            return from data in GetConn().Table<ERequest>() select data;
+        }
+        public IEnumerable<ERequest> GetList()
         {
             CreateTable();
             return from data in GetConn().Table<ERequest>() select data;
